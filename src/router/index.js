@@ -6,6 +6,7 @@ import EventShow from "../views/EventShow.vue";
 import Blog from "../views/Blog.vue";
 import BlogPage from "../views/BlogPage.vue";
 import HelloPage from "../views/HelloPage.vue";
+import BlogIndex from "@/views/BlogIndex.vue";
 
 Vue.use(VueRouter);
 
@@ -30,12 +31,19 @@ const routes = [
     path: "/blog",
     name: "blog",
     component: Blog,
-  },
-  {
-    path: "/blog/:id",
-    name: "blog-show",
-    component: BlogPage,
-    props: true,
+    children: [
+      {
+        path: "",
+        name: "BlogIndex",
+        component: BlogIndex,
+      },
+      {
+        path: ":id",
+        name: "BlogPage",
+        component: BlogPage,
+        props: true,
+      },
+    ],
   },
   {
     path: "/hello/:name1/:name2",

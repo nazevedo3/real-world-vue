@@ -1,8 +1,13 @@
 <template>
   <div class="blog-container">
-    <h1>Company Blog</h1>
+    <div class="left-side">
+      <h1>Blog</h1>
+      <BlogPost v-for="blog in blogs" :key="blog.id" :blog="blog" />
+    </div>
 
-    <BlogPost v-for="blog in blogs" :key="blog.id" :blog="blog" />
+    <div class="right-side">
+      <router-view :blogs="blogs" />
+    </div>
   </div>
 </template>
 
@@ -37,4 +42,16 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.blog-container {
+  max-width: 800px;
+  margin: auto;
+  display: flex;
+  .left-side {
+    flex: 1;
+  }
+  .right-side {
+    flex: 3;
+  }
+}
+</style>
