@@ -11,4 +11,7 @@ export default {
   getPost(id) {
     return apiClient.get("posts/" + id);
   },
+  update(post) {
+    return apiClient.put(`/posts/${post.id}`, post);
+  },
 };
