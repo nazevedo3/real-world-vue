@@ -1,6 +1,7 @@
 import Vue from "vue";
 import Vuex from "vuex";
 import EventService from "@/services/EventService.js";
+import PostService from "@/services/PostService.js";
 
 Vue.use(Vuex);
 
@@ -24,6 +25,7 @@ export default new Vuex.Store({
     events: [],
     eventsTotal: null,
     event: {},
+    posts: [],
   },
   mutations: {
     ADD_EVENT(state, event) {
@@ -38,8 +40,24 @@ export default new Vuex.Store({
     SET_EVENT(state, event) {
       state.event = event;
     },
+    SET_POSTS(state, posts) {
+      state.posts = posts;
+    },
+    UPDATE_POST(state, updatedPost) {
+      let index = state.posts.findIndex((p) => p.id == updatedPost.id);
+      Vue.set(state.posts, index, updatedPost);
+    },
   },
   actions: {
+    async updatePost({ commit }, editedPost) {
+      let response = await PostService.update(editedPost);
+      commit("UPDATE_POST", response.data);
+      return response.data;
+    },
+    async fetchPosts({ commit }) {
+      let response = await PostService.getPosts();
+      commit("SET_POSTS", response.data);
+    },
     createEvent({ commit }, event) {
       return EventService.postEvent(event).then(() => {
         commit("ADD_EVENT", event);
@@ -73,6 +91,9 @@ export default new Vuex.Store({
   },
   modules: {},
   getters: {
+    findPost: (state) => (id) => {
+      return state.posts.find((post) => post.id === id);
+    },
     catLength: (state) => {
       return state.categories.length;
     },

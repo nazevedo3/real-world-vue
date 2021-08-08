@@ -1,0 +1,50 @@
+<template>
+  <div>
+    <form @submit.prevent="savePost">
+      <div class="input-field">
+        Title: <textarea v-model="editablePost.title" rows="2" />
+      </div>
+      <div class="input-field">
+        Text: <textarea v-model="editablePost.text" rows="5" />
+      </div>
+      <button @click.prevent="cancel">Cancel</button>
+      <input type="submit" value="Update Post" />
+    </form>
+  </div>
+</template>
+
+<script>
+export default {
+  props: {
+    savePost: {
+      type: Function,
+      required: true,
+    },
+    editablePost: {
+      type: Object,
+      required: true,
+    },
+    cancel: {
+      type: Function,
+      required: true,
+    },
+    submitText: {
+      type: String,
+      default: "Submit Post",
+    },
+  },
+};
+</script>
+
+<style lang="scss" scoped>
+.input-field {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  textarea {
+    width: 300px;
+    margin: 10px;
+  }
+}
+</style>

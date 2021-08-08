@@ -7,6 +7,7 @@ import Blog from "../views/Blog.vue";
 import BlogPage from "../views/BlogPage.vue";
 import HelloPage from "../views/HelloPage.vue";
 import BlogIndex from "@/views/BlogIndex.vue";
+import BlogEdit from "@/views/BlogEdit.vue";
 
 Vue.use(VueRouter);
 
@@ -41,6 +42,12 @@ const routes = [
         path: ":id",
         name: "BlogPage",
         component: BlogPage,
+        props: true,
+      },
+      {
+        path: ":id/edit",
+        name: "BlogEdit",
+        component: BlogEdit,
         props: true,
       },
     ],
