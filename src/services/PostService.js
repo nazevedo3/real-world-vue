@@ -14,4 +14,10 @@ export default {
   update(post) {
     return apiClient.put(`/posts/${post.id}`, post);
   },
+  create(post) {
+    return apiClient.post("/posts", post);
+  },
+  delete(post) {
+    return apiClient.delete(`/posts/${post.id}`);
+  },
 };
