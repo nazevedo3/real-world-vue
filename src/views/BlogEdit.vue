@@ -7,6 +7,7 @@
       :cancel="cancel"
       submitText="Update Post"
     />
+    <button @click="remove">Delete</button>
   </div>
 </template>
 
@@ -38,6 +39,10 @@ export default {
     },
     cancel() {
       this.$router.push(`/blog/${this.blogPost.id}`);
+    },
+    async remove() {
+      await this.$store.dispatch("removePost", this.blogPost);
+      this.$router.push(`/blog`);
     },
   },
 };

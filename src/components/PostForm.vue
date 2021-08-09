@@ -8,7 +8,7 @@
         Text: <textarea v-model="editablePost.text" rows="5" />
       </div>
       <button @click.prevent="cancel">Cancel</button>
-      <input type="submit" value="Update Post" />
+      <input type="submit" :value="submitText" />
     </form>
   </div>
 </template>
