@@ -231,6 +231,42 @@
       "date": "",
       "time": "5:00",
       "attendees": []
+    },
+    {
+      "id": 825840,
+      "user": {
+        "id": "abc123",
+        "name": "Keeks"
+      },
+      "category": "nature",
+      "organizer": {
+        "id": "abc123",
+        "name": "Keeks"
+      },
+      "title": "SUCCESS",
+      "description": "test",
+      "locations": "",
+      "date": "2021-08-28T23:27:00.000Z",
+      "time": "2:00",
+      "attendees": []
+    },
+    {
+      "id": 7273064,
+      "user": {
+        "id": "abc123",
+        "name": "Keeks"
+      },
+      "category": "sustainability",
+      "organizer": {
+        "id": "abc123",
+        "name": "Keeks"
+      },
+      "title": "SUCCESS",
+      "description": "",
+      "locations": "",
+      "date": "",
+      "time": "",
+      "attendees": []
     }
   ]
 }
